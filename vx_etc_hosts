@@ -1,0 +1,7 @@
+# appended to /etc/hosts
+
+192.168.40.5        cxpm.vm.network
+192.168.40.10       cx71pa.vm.network
+192.168.40.15       cx67pa.vm.network
+192.168.40.20       ux1404pa.vm.network
+192.168.40.25       ux1204pa.vm.network
