@@ -3,7 +3,6 @@
 
 # modiified from https://goo.gl/TYcECR
 
-
 nodes_config = (JSON.parse(File.read("nodes.json")))['nodes']
 
 VAGRANTFILE_API_VERSION = "2"

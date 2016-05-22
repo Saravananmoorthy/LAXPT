@@ -38,4 +38,7 @@ else
 
     # symlink manifest from Vagrant synced folder location
     ln -s /vagrant/site.pp /etc/puppet/manifests/site.pp
+
+    rmdir  /usr/share/puppet/modules
+    ln -s /vagrant/etc/puppet /usr/share/puppet/modules
 fi
