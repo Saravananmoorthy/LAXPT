@@ -1,0 +1,34 @@
+{
+  "nodes": {
+    "puppet.vm.local": {
+      ":ip": "192.168.40.5",
+      "ports": [],
+      ":memory": 512,
+      ":bootstrap": "bootstrap-master.sh"
+    },
+    "checkmk.vm.local": {
+      ":ip": "192.168.40.10",
+      "ports": [],
+      ":memory": 512,
+      ":bootstrap": "bootstrap-node.sh"
+    },
+    "solr01.vm.local": {
+      ":ip": "192.168.40.15",
+      "ports": [],
+      ":memory": 512,
+      ":bootstrap": "bootstrap-node.sh"
+    },
+    "solr02.vm.local": {
+      ":ip": "192.168.40.20",
+      "ports": [],
+      ":memory": 512,
+      ":bootstrap": "bootstrap-node.sh"
+    },
+    "javamon.vm.local": {
+      ":ip": "192.168.40.25",
+      "ports": [],
+      ":memory": 512,
+      ":bootstrap": "bootstrap-node.sh"
+    }
+  }
+}

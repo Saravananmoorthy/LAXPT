@@ -1,36 +1,44 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
-Vagrant.configure(2) do |config|
+# modiified from https://goo.gl/TYcECR
 
-#  config.vm.boot_timeout = 20
-# config.ssh.insert_key = false
 
-  config.vm.box_check_update = false
-  config.vm.box_download_insecure = false
-  config.vm.box = "ux1404"
+nodes_config = (JSON.parse(File.read("nodes.json")))['nodes']
 
-  config.vm.provider "virtualbox" do |vb|
-    vb.gui = false
-    vb.memory = "512"
+VAGRANTFILE_API_VERSION = "2"
+
+Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
+    config.vm.box = "ux1404"
+
+  nodes_config.each do |node|
+    node_name   = node[0] # name of node
+    node_values = node[1] # content of node
+
+    config.vm.define node_name do |config|
+
+    config.vm.hostname = node_name
+    config.vm.network :private_network, ip: node_values[':ip']
+
+    # default RAM for all. no gui
+    config.vm.provider "virtualbox" do |vb|
+      vb.gui = false
+      vb.memory = "512"
+    end
+
+    # provisioning
+    config.vm.provision :shell, :path => node_values[':bootstrap']
+
+    end
   end
-
-  config.vm.define :puppet, primary: true do |puppet|
-    puppet.vm.hostname = "puppet.vm.local"
-    puppet.vm.box = "cx71"
-    puppet.vm.network "private_network", ip: "192.168.40.5"
-
-    puppet.vm.provision "shell", path: "vagrant_data/pm_install.sh"
-  end
-
-  config.vm.define :pa00, autostart: false do |pa00|
-    pa00.vm.hostname = "pa00.vm.local"
-    pa00.vm.network "private_network", ip: "192.168.40.15"
-  end
-
-  config.vm.define :pa01, autostart: false do |pa01|
-    pa01.vm.hostname = "pa01.vm.local"
-    pa01.vm.network "private_network", ip: "192.168.40.20"
-  end
-
 end
+
+## what do we do about  shared folders?
+
+# want /etc/puppet !!!
+
+#
+#   # group shared folder
+#   config.vm.synced_folder "vagrant_data/", "/data"
+#
+#     puppet.vm.synced_folder "etc_puppet/", "/etc/puppet"
