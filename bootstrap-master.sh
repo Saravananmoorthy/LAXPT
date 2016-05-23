@@ -10,14 +10,14 @@ then
 else
     # Install Puppet Master
 
-    # when using Ubuntu-baked packages
-    # apt-get install -yq puppetmaster
+    # when using Ubuntu-baked packages - no license required!!
+    apt-get install -yq puppetmaster
 
-    # when using puppetlabs-baked packages
-    wget https://apt.puppetlabs.com/puppetlabs-release-trusty.deb && \
-    sudo dpkg -i puppetlabs-release-trusty.deb && \
-    sudo apt-get update -yq && sudo apt-get upgrade -yq && \
-    sudo apt-get install -yq puppetmaster
+    # when using puppetlabs-baked packages - licence required??
+    # wget https://apt.puppetlabs.com/puppetlabs-release-trusty.deb && \
+    # sudo dpkg -i puppetlabs-release-trusty.deb && \
+    # sudo apt-get update -yq && sudo apt-get upgrade -yq && \
+    # sudo apt-get install -yq puppetmaster
 
     # Configure /etc/hosts file
     echo "" | sudo tee --append /etc/hosts 2> /dev/null && \
