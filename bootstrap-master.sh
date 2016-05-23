@@ -10,12 +10,14 @@ then
 else
     # Install Puppet Master
 
-    apt-get install -yq puppetmaster
+    # when using Ubuntu-baked packages
+    # apt-get install -yq puppetmaster
 
-    # wget https://apt.puppetlabs.com/puppetlabs-release-trusty.deb && \
-    # sudo dpkg -i puppetlabs-release-trusty.deb && \
-    # sudo apt-get update -yq && sudo apt-get upgrade -yq && \
-    # sudo apt-get install -yq puppetmaster
+    # when using puppetlabs-baked packages
+    wget https://apt.puppetlabs.com/puppetlabs-release-trusty.deb && \
+    sudo dpkg -i puppetlabs-release-trusty.deb && \
+    sudo apt-get update -yq && sudo apt-get upgrade -yq && \
+    sudo apt-get install -yq puppetmaster
 
     # Configure /etc/hosts file
     echo "" | sudo tee --append /etc/hosts 2> /dev/null && \
@@ -25,7 +27,7 @@ else
     echo "192.168.40.15   solr01.vm.local checkmk"  | sudo tee --append /etc/hosts 2> /dev/null && \
     echo "192.168.40.20   solr02.vm.local checkmk"  | sudo tee --append /etc/hosts 2> /dev/null && \
     echo "192.168.40.25   javamon.vm.local  node02"   | sudo tee --append /etc/hosts 2> /dev/null
-    #
+
     # Add optional alternate DNS names to /etc/puppet/puppet.conf
     sudo sed -i 's/.*\[main\].*/&\ndns_alt_names = puppet,puppet.vm.local/' /etc/puppet/puppet.conf
 
@@ -38,7 +40,8 @@ else
 
     # symlink manifest from Vagrant synced folder location
     ln -s /vagrant/site.pp /etc/puppet/manifests/site.pp
-    
+
     # fix the incorrect permissions on this file
-    chmod 0644 /etc/puppet/modules/check_mk/metadata.json
+    #touch  /etc/puppet/modules/check_mk/metadata.json
+    # chmod 0644 /etc/puppet/modules/check_mk/metadata.json
 fi
