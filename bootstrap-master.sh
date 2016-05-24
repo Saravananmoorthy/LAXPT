@@ -11,7 +11,7 @@ else
     # Install Puppet Master
 
     # when using Ubuntu-baked packages - no license required!!
-    apt-get install -yq puppetmaster
+    apt-get install -yq puppetmaster puppet-lint
 
     # when using puppetlabs-baked packages - licence required??
     # wget https://apt.puppetlabs.com/puppetlabs-release-trusty.deb && \
