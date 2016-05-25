@@ -1,28 +1,28 @@
-# site.pp
-node 'checkmk.vm.local' {
-  notify { 'this is the __first__ server': }
+# site.pp - main target(s)
 
+node 'checkmk01.vm.local' {
+  notify {'test':}
   include checkmk
-  # file { '/tmp/check-mk-raw-1.2.8p1_0.trusty_amd64.deb':
-  #   ensure =>  present,
-  #   replace => 'no'
-  #   source =>  'puppet:///modules/checkmk/check-mk-raw-1.2.8p1_0.trusty_amd64.deb',
-  #   owner  =>  'root',
-  #   group  =>  'root',
-  # }
+  notify {'test two': }
+
+  include checkmk::server
+
 }
 
 
-node 'solr01.vm.local' {
-  notify { 'our __second__ server': }
-}
-
-
-node 'solr02.vm.local' {
-  notify { '__third__ server': }
-}
-
-
-node 'javamon.vm.local' {
-  notify { 'fourth and final server': }
-}
+#
+#
+# node 'checkmk02.vm.local' {
+# }
+#
+#
+# node 'solr01.vm.local' {
+# }
+#
+#
+# node 'solr02.vm.local' {
+# }
+#
+#
+# node 'javamon.vm.local' {
+# }

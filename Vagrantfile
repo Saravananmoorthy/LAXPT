@@ -3,12 +3,14 @@
 
 # modiified from https://goo.gl/TYcECR
 
-nodes_config = (JSON.parse(File.read("nodes.json")))['nodes']
+nodes_config = (JSON.parse(File.read("./boot_files/nodes.json")))['nodes']
 
 VAGRANTFILE_API_VERSION = "2"
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
-    config.vm.box = "ux1404"
+
+
+  config.vm.synced_folder "etc/my_puppet", "/data"
 
   nodes_config.each do |node|
     node_name   = node[0] # name of node
@@ -22,8 +24,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     # default RAM for all. no gui
     config.vm.provider "virtualbox" do |vb|
       vb.gui = false
-      vb.memory = "512"
     end
+
+    config.vm.box = node_values[':box']
 
     # provisioning
     config.vm.provision :shell, :path => node_values[':bootstrap']
@@ -31,13 +34,3 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     end
   end
 end
-
-## what do we do about  shared folders?
-
-# want /etc/puppet !!!
-
-#
-#   # group shared folder
-#   config.vm.synced_folder "vagrant_data/", "/data"
-#
-#     puppet.vm.synced_folder "etc_puppet/", "/etc/puppet"

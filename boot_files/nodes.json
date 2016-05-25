@@ -1,0 +1,53 @@
+{
+  "nodes": {
+    "puppet01.vm.local": {
+      ":ip": "192.168.40.5",
+      "ports": [],
+      ":memory": 128,
+      ":bootstrap": "bootstrap-master-ubuntu.sh",
+      ":box": "ux1404"
+    },
+    "xmon.vm.local": {
+      ":ip": "192.168.40.6",
+      "ports": [],
+      ":memory": 128,
+      ":bootstrap": "bootstrap-node.sh",
+      ":box": "ux1404"
+    },
+    "checkmk01.vm.local": {
+      ":ip": "192.168.40.10",
+      "ports": [],
+      ":memory": 128,
+      ":bootstrap": "bootstrap-node.sh",
+      ":box": "ux1404"
+    },
+    "checkmk02.vm.local": {
+      ":ip": "192.168.40.15",
+      "ports": [],
+      ":memory": 128,
+      ":bootstrap": "bootstrap-node.sh",
+      ":box": "ux1404"
+    },
+    "solr01.vm.local": {
+      ":ip": "192.168.40.20",
+      "ports": [],
+      ":memory": 128,
+      ":bootstrap": "bootstrap-node.sh",
+      ":box": "ux1404"
+    },
+      "solr02.vm.local": {
+      ":ip": "192.168.40.25",
+      "ports": [],
+      ":memory": 128,
+      ":bootstrap": "bootstrap-node.sh",
+      ":box": "ux1404"
+    },
+    "munin.vm.local": {
+      ":ip": "192.168.40.50",
+      "ports": [],
+      ":memory": 128,
+      ":bootstrap": "bootstrap-node.sh",
+      ":box": "ux1404"
+    }
+  }
+}
