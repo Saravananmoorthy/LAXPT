@@ -45,34 +45,36 @@
 
 # modules/checkmk_agent/manifests/init.pp
 class checkmk_agent {
-## install this package on the !!__agents__!!
-  service { 'xinetd':
-    ensure => changeme,
-    enable => true,
-    hasrestart => true,
+
+  package { 'xinetd':
+    ensure => installed,
+  }
+
+  file { '/etc/xinetd.d/check_mk':
+    source     => 'puppet:///modules/checkmk_agent/check_mk',
+    owner      => 'root',
+    group      => 'root',
+    mode       => '640',
+    notify     => Service['xinetd'],
+    require    => Package['xinetd']
+  }
+
+  service {'xinetd':
+    ensure     => running,
+    enable     => true,
     hasstatus  => true,
+    hasrestart => true,
   }
 
-  file {'/tmp/etc_xinetd_check_mk':
-    ensure   => present,
-    mode     => '0644',
-    owner    => 'root',
-    group    => 'root',
-    source   => 'puppet:///modules/checkmk_agent/check_mk'
-
-  }
-
-  file { '/tmp/check-mk-agent_1.2.4p5-2_all.deb':
-    ensure  => present,
-    mode    => '0644',
-    owner   => 'root',
-    group   => 'root',
-    source  => "puppet:///modules/checkmk_agent/check-mk-agent_1.2.4p5-2_all.deb",
-  }
-
-  package { 'checkmk-agent':
+  file {'/tmp/check-mk-agent_1.2.4p5-2_all.deb':
     ensure    => present,
-    provider  => 'dpkg',
-    source    => '/tmp/',
+    source    => "puppet:///modules/checkmk_agent/check-mk-agent_1.2.4p5-2_all.deb",
   }
+
+  package { 'check-mk-agent':
+    ensure    => installed,
+    provider  => 'dpkg',
+    source    => "/tmp/check-mk-agent_1.2.4p5-2_all.deb",
+  }
+
 }

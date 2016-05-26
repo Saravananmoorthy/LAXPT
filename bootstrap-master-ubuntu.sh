@@ -10,7 +10,7 @@ then
     echo "Puppet Master is already installed. Exiting..."
 else
     # Install Puppet Master
-    apt-get install -yq puppetmaster puppet-lint
+    apt-get install -yq puppetmaster puppet-lint puppet bash-completion
 
     # Configure /etc/hosts file
     echo "" | sudo tee --append /etc/hosts 2> /dev/null && \
@@ -26,8 +26,10 @@ else
     # Add optional alternate DNS names to /etc/puppet/puppet.conf
     sudo sed -i 's/.*\[main\].*/&\ndns_alt_names = puppet,puppet.vm.local/' /etc/puppet/puppet.conf
 
+    sudo puppet agent --enable
+    
     # symlink manifests from Vagrant synced folder location
-    ln -s /vagrant/site.pp /etc/puppet/manifests/site.pp
+  #  ln -s /vagrant/site.pp /etc/puppet/manifests/site.pp
 
     #####################################################
     ##
