@@ -1,0 +1,9 @@
+{
+  "README.md": "a2575ee101da0477c4609c3044b502b9",
+  "_Modulefile": "87a81a64afd6a535998c6f403c5853bc",
+  "files/plugins-minimal.sh": "370fa1431220eacb694c95c0f1bac99c",
+  "manifests/node.pp": "1667df2532678c7820dffa3d6aa9b55a",
+  "metadata.json": "c74f9d47172d5e46056883303e6d4d4b",
+  "templates/munin-conf-node-info.erb": "5695d232923d776aa2e498ab28ca77c1",
+  "templates/munin-node.conf.erb": "a5d0c92f01dc2f0787b03fccd089dafb"
+}
