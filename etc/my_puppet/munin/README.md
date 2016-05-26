@@ -1,9 +1,9 @@
-# puppet-munin
+# puppet-opsview
 
-This puppet module automates installation/management of the munin-node package
+This puppet module automates installation/management of the opsview-node package
 
 ## TODOs
-  * support for munin package
+  * support for opsview package
   * enable/disable plugins
 
 ## Versioning
@@ -16,14 +16,14 @@ This module adheres to [Semantic Versioning 2.0.0-rc.2](http://semver.org/).
   * `listen_port`:    default='4949'
   * `ignore_files`:   default=[]
   * `allowed_ips`:    default=[]
-  * `eipaddress`:     default=facter ipaddress, what IP to put in munin master`s node config for this server
+  * `eipaddress`:     default=facter ipaddress, what IP to put in opsview master`s node config for this server
   * `ensure_service`: default=running
   * `enable_service`: default=true
   * `minimal_plugins`: boolean, install minimal plugins only, default=false
 
 ## Usage
 
-    class { 'munin::node':
+    class { 'opsview::node':
       allowed_ips     => [ '192.168.1.10', '192.168.1.20', ],
       listen_port     => '4949',
       listen_address  => '*',
@@ -33,37 +33,37 @@ This module adheres to [Semantic Versioning 2.0.0-rc.2](http://semver.org/).
       minimal_plugins => true, 
     }
 
-## Automatically add munin nodes to munin master
+## Automatically add opsview nodes to opsview master
 
-    # tested to work on munin 2.0.6, relies on includedir
-    node 'munin-master.mydomain.local' {
-      File <<| tag == 'munin-node' |>>
+    # tested to work on opsview 2.0.6, relies on includedir
+    node 'opsview-master.mydomain.local' {
+      File <<| tag == 'opsview-node' |>>
     }
 
 ## Minimal plugins
 
 <pre>
-  cpu -> /usr/share/munin/plugins/cpu
-  df -> /usr/share/munin/plugins/df
-  df_inode -> /usr/share/munin/plugins/df_inode
-  entropy -> /usr/share/munin/plugins/entropy
-  forks -> /usr/share/munin/plugins/forks
-  fw_packets -> /usr/share/munin/plugins/fw_packets
-  if_err_eth0 -> /usr/share/munin/plugins/if_err_
-  if_eth0 -> /usr/share/munin/plugins/if_
-  interrupts -> /usr/share/munin/plugins/interrupts
-  iostat_ios -> /usr/share/munin/plugins/iostat_ios
-  irqstats -> /usr/share/munin/plugins/irqstats
-  load -> /usr/share/munin/plugins/load
-  memory -> /usr/share/munin/plugins/memory
-  open_files -> /usr/share/munin/plugins/open_files
-  open_inodes -> /usr/share/munin/plugins/open_inodes
-  processes -> /usr/share/munin/plugins/processes
-  proc_pri -> /usr/share/munin/plugins/proc_pri
-  swap -> /usr/share/munin/plugins/swap
-  threads -> /usr/share/munin/plugins/threads
-  uptime -> /usr/share/munin/plugins/uptime
-  vmstat -> /usr/share/munin/plugins/vmstat
+  cpu -> /usr/share/opsview/plugins/cpu
+  df -> /usr/share/opsview/plugins/df
+  df_inode -> /usr/share/opsview/plugins/df_inode
+  entropy -> /usr/share/opsview/plugins/entropy
+  forks -> /usr/share/opsview/plugins/forks
+  fw_packets -> /usr/share/opsview/plugins/fw_packets
+  if_err_eth0 -> /usr/share/opsview/plugins/if_err_
+  if_eth0 -> /usr/share/opsview/plugins/if_
+  interrupts -> /usr/share/opsview/plugins/interrupts
+  iostat_ios -> /usr/share/opsview/plugins/iostat_ios
+  irqstats -> /usr/share/opsview/plugins/irqstats
+  load -> /usr/share/opsview/plugins/load
+  memory -> /usr/share/opsview/plugins/memory
+  open_files -> /usr/share/opsview/plugins/open_files
+  open_inodes -> /usr/share/opsview/plugins/open_inodes
+  processes -> /usr/share/opsview/plugins/processes
+  proc_pri -> /usr/share/opsview/plugins/proc_pri
+  swap -> /usr/share/opsview/plugins/swap
+  threads -> /usr/share/opsview/plugins/threads
+  uptime -> /usr/share/opsview/plugins/uptime
+  vmstat -> /usr/share/opsview/plugins/vmstat
 </pre>
 
 ## Dependencies

@@ -1,15 +1,15 @@
 {
-  "name": "proletaryo-munin",
+  "name": "proletaryo-opsview",
   "version": "0.5.3",
   "author": "proletaryo",
-  "summary": "munin-node installation & management module for CentOS/Ubuntu/AWS Linux/Scientific Linux",
+  "summary": "opsview-node installation & management module for CentOS/Ubuntu/AWS Linux/Scientific Linux",
   "license": "Apache-2.0",
-  "source": "https://github.com/proletaryo/puppet-munin",
-  "project_page": "https://forge.puppetlabs.com/proletaryo/munin",
-  "issues_url": "https://github.com/proletaryo/puppet-munin/issues",
+  "source": "https://github.com/proletaryo/puppet-opsview",
+  "project_page": "https://forge.puppetlabs.com/proletaryo/opsview",
+  "issues_url": "https://github.com/proletaryo/puppet-opsview/issues",
   "tags": [
-    "munin",
-    "munin node",
+    "opsview",
+    "opsview node",
     "monitoring"
   ],
   "operatingsystem_support": [

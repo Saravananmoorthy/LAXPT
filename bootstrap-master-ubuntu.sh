@@ -21,7 +21,7 @@ else
     echo "192.168.40.15     checkmk02.vm.local checkmk02"  | sudo tee --append /etc/hosts 2> /dev/null && \
     echo "192.168.40.20     solr01.vm.local solr01"  | sudo tee --append /etc/hosts 2> /dev/null && \
     echo "192.168.40.25     solr02.vm.local solr02"  | sudo tee --append /etc/hosts 2> /dev/null && \
-    echo "192.168.40.50     munin.vm.local munin"  | sudo tee --append /etc/hosts 2> /dev/null
+    echo "192.168.40.50     opsview.vm.local opsview"  | sudo tee --append /etc/hosts 2> /dev/null
 
     # Add optional alternate DNS names to /etc/puppet/puppet.conf
     sudo sed -i 's/.*\[main\].*/&\ndns_alt_names = puppet,puppet.vm.local/' /etc/puppet/puppet.conf

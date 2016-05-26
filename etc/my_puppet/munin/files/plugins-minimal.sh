@@ -5,8 +5,8 @@ set -e
 # define path
 export PATH="/bin:/usr/bin:$PATH"
 
-DIR_SRC_PLUGIN='/usr/share/munin/plugins'
-DIR_DEP_PLUGIN='/etc/munin/plugins'
+DIR_SRC_PLUGIN='/usr/share/opsview/plugins'
+DIR_DEP_PLUGIN='/etc/opsview/plugins'
 
 # delete all plugins and recreate
 if [[ ${#DIR_DEP_PLUGIN} -gt 6 ]] && [[ $DIR_DEP_PLUGIN =~ plugins$ ]]

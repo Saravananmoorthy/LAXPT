@@ -1,8 +1,8 @@
-# Class munin::node
+# Class opsview::node
 #
 # Usage:
 #
-#  class { 'munin::node':
+#  class { 'opsview::node':
 #    eipaddress     => '192.168.0.1', # explicit IP address
 #    allowed_ips    => [ '192.168.1.10', '192.168.1.20', ],
 #    listen_port    => '4949',
@@ -12,7 +12,7 @@
 #
 #  }
 
-class munin::node (
+class opsview::node (
     $ensure          = installed,
     $eipaddress      = undef,
     $listen_address  = '*',
@@ -26,11 +26,11 @@ class munin::node (
 
   case $::osfamily {
     'redhat': {
-      $log_dir      = '/var/log/munin-node'
+      $log_dir      = '/var/log/opsview-node'
       $cidr_package = 'perl-Net-CIDR'
     }
     'debian': {
-      $log_dir      = '/var/log/munin'
+      $log_dir      = '/var/log/opsview'
       $cidr_package = 'libnet-cidr-perl'
     }
     default: { fail ("Error: Unrecognized operating system = ${::operatingsystem}") }
@@ -40,28 +40,28 @@ class munin::node (
     ensure => installed,
   }
 
-  package { 'munin-node':
+  package { 'opsview-node':
     ensure  => $ensure,
     require => Package[$cidr_package],
   }
 
-  service { 'munin-node':
+  service { 'opsview-node':
     ensure     => $ensure_service,
     enable     => $enable_service,
     hasrestart => true,
     hasstatus  => true,
-    require    => Package['munin-node'],
+    require    => Package['opsview-node'],
   }
 
-  file { 'munin-node.conf':
+  file { 'opsview-node.conf':
     ensure  => file,
     owner   => root,
     group   => root,
     mode    => '0644',
-    path    => '/etc/munin/munin-node.conf',
-    content => template('munin/munin-node.conf.erb'),
-    require => Package['munin-node'],
-    notify  => Service['munin-node'],
+    path    => '/etc/opsview/opsview-node.conf',
+    content => template('opsview/opsview-node.conf.erb'),
+    require => Package['opsview-node'],
+    notify  => Service['opsview-node'],
   }
 
   # NOTE: minimize enabled plugins to decrease graphs
@@ -73,35 +73,35 @@ class munin::node (
 
     # put the script to /tmp/ & then run it via exec
     file { 'plugins-minimal.sh':
-      path    => '/etc/munin/plugins-minimal.sh',
+      path    => '/etc/opsview/plugins-minimal.sh',
       owner   => 'root',
       group   => 'root',
       mode    => '0600',
-      source  => 'puppet:///modules/munin/plugins-minimal.sh',
-      require => Package['munin-node'],
+      source  => 'puppet:///modules/opsview/plugins-minimal.sh',
+      require => Package['opsview-node'],
     }
 
     exec { 'plugins-minimal':
-      command     => 'bash /etc/munin/plugins-minimal.sh',
+      command     => 'bash /etc/opsview/plugins-minimal.sh',
       user        => 'root',
       group       => 'root',
       refreshonly => true,
       subscribe   => File['plugins-minimal.sh'],
-      notify      => Service['munin-node'],
+      notify      => Service['opsview-node'],
     }
 
   }
 
-  # NOTE: export munin-node info
-  # this automatically adds the node to munin server 
+  # NOTE: export opsview-node info
+  # this automatically adds the node to opsview server 
   #   for monitoring once realized
-  @@file { "/etc/munin/munin-conf.d/${::fqdn}.conf":
+  @@file { "/etc/opsview/opsview-conf.d/${::fqdn}.conf":
     ensure  => file,
     owner   => root,
     group   => root,
     mode    => '0644',
-    tag     => 'munin-node',
-    content => template('munin/munin-conf-node-info.erb'),
+    tag     => 'opsview-node',
+    content => template('opsview/opsview-conf-node-info.erb'),
   }
 
 }

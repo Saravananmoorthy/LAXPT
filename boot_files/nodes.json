@@ -42,12 +42,12 @@
       ":bootstrap": "bootstrap-node.sh",
       ":box": "ux1404"
     },
-    "munin.vm.local": {
+    "opsview.vm.local": {
       ":ip": "192.168.40.50",
       "ports": [],
       ":memory": 128,
-      ":bootstrap": "bootstrap-node.sh",
-      ":box": "ux1404"
+      ":box": "cx67",
+      ":bootstrap": "bootstrap-centos7-node.sh"    
     }
   }
 }
