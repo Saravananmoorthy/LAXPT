@@ -43,8 +43,7 @@
 # Copyright 2016 Your name here, unless otherwise noted.
 #
 
-
-class checkmk {
+class checkmk_host {
 
   $my_deps= ['apache2', 'apache2-bin', 'apache2-data', 'apache2-mpm-prefork',
     'apache2-utils', 'curl', 'debugedit', 'dialog', 'fontconfig',
@@ -77,24 +76,86 @@ class checkmk {
         'python-pil', 'python-renderpm', 'python-reportlab', 'python-reportlab-accel',
         'python-samba', 'python-support', 'python-talloc', 'python-tdb', 'rpm', 'rpm-common',
         'rpm2cpio', 'samba-common', 'samba-common-bin', 'samba-libs', 'smbclient',
-        'snmp','ssl-cert', 'traceroute', 'unzip', 'update-inetd', 'x11-common', 'xinetd']
+        'snmp','ssl-cert', 'traceroute', 'unzip', 'update-inetd', 'x11-common']
+
 
   package { $my_deps: ensure => installed }
-
-  package { 'gdebi-core': ensure => installed }
-
-
+  #
+  # package { 'gdebi-core': ensure => installed }
+  #
+  #
   file { '/tmp/check-mk-raw-1.2.8p1_0.trusty_amd64.deb':
     ensure => present,
-    mode   => 0777,
-    source =>  "puppet:///modules/checkmk/check-mk-raw-1.2.8p1_0.trusty_amd64.deb",
+    mode   => '640',
+    source =>  "puppet:///modules/checkmk_host/check-mk-raw-1.2.8p1_0.trusty_amd64.deb",
     }
 
-
-  package { 'check-mk':
+  package { 'check-mk-raw-1.2.8p1':
     provider => 'dpkg',
     ensure   => present,
     source   =>  "/tmp/check-mk-raw-1.2.8p1_0.trusty_amd64.deb",
-  }
+    }
 
+  exec {'omd create john':
+    path   => "/usr/bin:/usr/sbin:/bin",
+    onlyif => 'test `omd sites --bare | grep john | wc -l` -eq 0',
+    }
+
+  exec {'omd restart john':
+    path    => "/usr/bin:/usr/sbin:/bin",
+    # onlyif  => "test `omd status --bare john | awk '/OVERALL/ {print $2}'` -eq 1",
+    }
 }
+
+
+  # omd create __name__
+
+  # omd start __name__
+#_______________omd create __john__________________________________
+# Adding /opt/omd/sites/john/tmp to /etc/fstab.
+# Creating temporary filesystem /omd/sites/john/tmp...OK
+# Restarting Apache...OK
+# Created new site john with version 1.2.8p1.cre.
+#
+#   The site can be started with omd start john.
+#   The default web UI is available at http://checkmk01/john/
+#   The admin user for the web applications is omdadmin with password omd.
+#   Please do a su - john for administration of this site.
+
+
+#__________omd status
+# omd status
+# Doing 'status' on site john:
+# mkeventd:       stopped
+# rrdcached:      stopped
+# npcd:           stopped
+# nagios:         stopped
+# apache:         stopped
+# crontab:        stopped
+# -----------------------
+# Overall state:  stopped
+#
+# Doing 'status' on site volvic:
+# mkeventd:       stopped
+# rrdcached:      stopped
+# npcd:           stopped
+# nagios:         stopped
+# apache:         stopped
+# crontab:        stopped
+# -----------------------
+# Overall state:  stopped
+
+#__________omd start john
+# Starting mkeventd...OK
+# Starting rrdcached...OK
+# Starting npcd...OK
+# Starting nagios...OK
+# Starting dedicated Apache for site john...OK
+# Initializing Crontab...OK
+
+  # omd sites # blank when package is first installed
+  # omd status
+  # onlyif
+  # unless
+  # creates
+  # refreshonly
