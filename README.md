@@ -38,9 +38,17 @@ VM, run `vagrant status NAME`.
 
 just tell the user what to do
 
+* edit boot_files/nodes.json file. It's YAML so easy to specify IP addresses, OS, etc
+
+
+* `vagrant up` or `vagrant up __node.vm.local__`
+
 ## sources
 
 I nicked code from these sources
+
+* https://goo.gl/MDNxR8
+
 
 
 ## this is where you tell the user what all the files and directories are for
