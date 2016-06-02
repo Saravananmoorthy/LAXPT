@@ -46,6 +46,29 @@ just tell the user what to do
 
 * `vagrant up` or `vagrant up __node.vm.local__`
 
+
+## Serverspec testing
+
+Refer to the available list of tests below. These tests are role-based, in the fact that I don't care wher my boxes are, but what they __do__. Also refer to the tree below to add new roles for server testing.
+
+````bash
+
+rake -T --all
+rake serverspec:all        #
+rake serverspec:checkmk01  # Run serverspec to checkmk01.vm.local
+rake serverspec:checkmk02  # Run serverspec to checkmk02.vm.local
+rake serverspec:jenkins    # Run serverspec to jenkins.vm.local
+rake serverspec:opsview    # Run serverspec to opsview.vm.local
+rake serverspec:puppet01   # Run serverspec to puppet01.vm.local
+rake serverspec:solr01     # Run serverspec to solr01.vm.local
+rake serverspec:solr02     # Run serverspec to solr02.vm.local
+rake serverspec:xmon       # Run serverspec to xmon.vm.local
+rake spec                  # Run serverspec to all hosts
+
+````
+
+
+
 ## sources
 
 I nicked code from these sources
