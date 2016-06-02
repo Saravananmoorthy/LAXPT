@@ -21,10 +21,15 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       srv.vm.box = servers["box"]
       srv.vm.network "private_network", ip: servers["ip"]
 
+      # install puppet with a shell script
+      srv.vm.provision "shell", path: "bootfiles/install_puppet_agent.sh"
+
+      # now you can provision with puppet
       srv.vm.provision "puppet" do |puppet|
         puppet.manifest_file  = "manifests/site.pp"
         puppet.manifests_path = "."
       end
+
       srv.vm.provider :virtualbox do |vb|
         vb.name = servers["name"]
         vb.memory = servers["ram"]

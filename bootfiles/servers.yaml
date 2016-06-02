@@ -25,11 +25,13 @@
   ram: 128
 - name:    docker
   hostame:    docker.vm.local
+  box: ux1404
   ip: 192.168.40.12
   ports: []
   ram: 128
 - name:    jenkins
   hostname: jenkins.vm.local
+  box: ux1404
   ip: 192.168.40.13
   ports: []
   ram: 500

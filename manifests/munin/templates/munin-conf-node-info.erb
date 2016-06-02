@@ -1,0 +1,7 @@
+[<%= @fqdn %>]
+<% if @eipaddress -%>
+  address <%= @eipaddress %>
+<% else -%>
+  address <%= @ipaddress %>
+<% end -%>
+  use_node_name yes
