@@ -20,10 +20,16 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     config.vm.define servers["name"] do |srv|
       srv.vm.box = servers["box"]
       srv.vm.network "private_network", ip: servers["ip"]
+
+      srv.vm.provision "puppet" do |puppet|
+        puppet.manifest_file  = "manifests/site.pp"
+        puppet.manifests_path = "."
+      end
       srv.vm.provider :virtualbox do |vb|
         vb.name = servers["name"]
         vb.memory = servers["ram"]
-      end
+      end # end of provider
+
     end
-  end
-end
+  end # end of servers.each
+end # end of Vagrant

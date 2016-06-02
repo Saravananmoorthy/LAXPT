@@ -1,47 +1,35 @@
 ---
-- name: puppet01.vm.local
+- name:  puppet
+  hostname: puppet.vm.local
   box: ux1404
   ip: 192.168.40.5
   ports: []
   ram: 128
-  bootstrap: bootstrap-master-ubuntu.sh
-- name:  xmon.vm.local
+- name:  xmon
+  hostname: xmon.vm.local
   box: ux1404
   ip: 192.168.40.6
   ports: []
   ram: 128
-  bootstrap: bootstrap-node.sh
-- name: checkmk01.vm.local
+- name: checkmk
+  hostname: checkmk.vm.local
   box: ux1404
+  ip: 192.168.40.9
+  ports: []
+  ram: 128
+- name:    solr
+  hostname: solr.vm.local
   ip: 192.168.40.10
-  ports: []
-  ram: 128
-  bootstrap: bootstrap-node.sh
-- name:    checkmk02.vm.local
-  box: ux1404
-  ip: 192.168.40.15
-  ports: []
-  ram: 128
-  bootstrap: bootstrap-node.sh
-- name:    solr01.vm.local
-  ip: 192.168.40.20
   box: ux1404
   ports: []
   ram: 128
-  bootstrap: bootstrap-node.sh
-- name:      solr02.vm.local
-  ip: 192.168.40.25
-  box: ux1404
+- name:    docker
+  hostame:    docker.vm.local
+  ip: 192.168.40.12
   ports: []
   ram: 128
-  bootstrap: bootstrap-node.sh
-- name:    opsview.vm.local
-  ip: 192.168.40.50
+- name:    jenkins
+  hostname: jenkins.vm.local
+  ip: 192.168.40.13
   ports: []
-  ram: 128
-  bootstrap: bootstrap-centos7-node.sh
-- name:    jenkins.vm.local
-  ip: 192.168.40.52
-  ports: []
-  ram: 128
-  bootstrap: bootstrap-centos7-node.sh
+  ram: 500

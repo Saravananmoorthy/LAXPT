@@ -42,7 +42,7 @@ Current machine states:
 
 puppet01.vm.local         running (virtualbox)
 xmon.vm.local             not created (virtualbox)
-checkmk01.vm.local        not created (virtualbox)
+checkmk.vm.local        not created (virtualbox)
 checkmk02.vm.local        not created (virtualbox)
 solr01.vm.local           not created (virtualbox)
 solr02.vm.local           not created (virtualbox)
@@ -108,7 +108,7 @@ Once you have added a new dir under spec and added some tests, they will be list
 ````bash
 rake -T --all
 rake serverspec:all        #
-rake serverspec:checkmk01  # Run serverspec to checkmk01.vm.local
+rake serverspec:checkmk  # Run serverspec to checkmk.vm.local
 rake serverspec:checkmk02  # Run serverspec to checkmk02.vm.local
 rake serverspec:jenkins    # Run serverspec to jenkins.vm.local
 rake serverspec:opsview    # Run serverspec to opsview.vm.local

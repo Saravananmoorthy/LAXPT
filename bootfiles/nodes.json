@@ -12,7 +12,7 @@
       ":memory": 128,
       ":bootstrap": "bootstrap-node.sh",
     },
-    "checkmk01.vm.local": {
+    "checkmk.vm.local": {
       ":ip": "192.168.40.10",
       "ports": [],
       ":memory": 128,
@@ -36,7 +36,7 @@
       ":memory": 128,
       ":bootstrap": "bootstrap-node.sh",
     },
-    "opsview.vm.local": {
+    "gitlab.vm.local": {
       ":ip": "192.168.40.50",
       "ports": [],
       ":memory": 128,
