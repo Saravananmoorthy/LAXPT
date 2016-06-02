@@ -16,5 +16,6 @@ describe "tests for installed puppet modules" do
     its(:stdout) { should match /please-fail/ }
     its(:stdout) { should match /puppetlabs-mysql/ }
     its(:stdout) { should match /test-module/ }
+    its(:stdout) { should match /tuxinvader-brocadevtm/ }
   end
 end
