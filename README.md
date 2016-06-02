@@ -1,18 +1,43 @@
 # LAXPT
-Code used during the Linux Academy Puppet Training Course
+Code used during the Linux Academy Puppet Training Course.
 
 ## Objective(s)
 
-* have a working lab ready for the Linux Academy Puppet Training
+* Have a working lab ready for the Linux Academy Puppet Training.
 
-* use this lab to test anything pupppet-related
+* Use this lab to test anything pupppet-related.
 
-* Use serverspec to test the vagrant boxes
+* Use serverspec to test the vagrant boxes (prove my puppet-foo).
 
 
+## Tools needed
+
+The state of my workstation at time of writing:-
 
 ````bash
-vx status                                                                                                                                                                                                                     LAXPT
+vagrant --version
+Vagrant 1.8.1
+
+ruby --version
+ruby 2.0.0p648 (2015-12-16 revision 53162) [universal.x86_64-darwin15]
+````
+
+### Ruby gems
+````bash
+gem list | awk '/puppet |bundler|lint /'
+bundler (1.11.2)
+metadata-json-lint (0.0.11)
+puppet (4.5.0 universal-darwin, 4.4.2 universal-darwin)
+puppet-lint (1.1.0)
+rspec-puppet (2.4.0, 2.0.1)
+````
+
+
+### Vagrant boxes
+128MB RAM each.
+
+````bash
+vagrant status
 Current machine states:
 
 puppet01.vm.local         running (virtualbox)
@@ -23,19 +48,14 @@ solr01.vm.local           not created (virtualbox)
 solr02.vm.local           not created (virtualbox)
 opsview.vm.local          not created (virtualbox)
 jenkins.vm.local          not created (virtualbox)
-
-This environment represents multiple VMs. The VMs are all listed
-above with their current state. For more information about a specific
-VM, run `vagrant status NAME`.
 ````
 
 
+## Usage summary
 
-## usage
+* $editor properties.yml - define roles for the vagrant boxes
 
-just tell the user what to do
-
-* edit boot_files/nodes.json file. It's YAML so easy to specify IP addresses, OS, etc
+* $editor bootfiles/servers.yml - define your server "specs". RAM, IP, vagrant box etc
 
 
 * `vagrant up` or `vagrant up __node.vm.local__`
@@ -43,28 +63,28 @@ just tell the user what to do
 
 ## Serverspec testing
 
-Just use `bundle install` to install serverspec. Vagrat boxes are now reedy for testing.
+Just use `bundle install` to install serverspec. Vagrant boxes are now ready for testing.
 
-Refer to the available list of tests below. These tests are role-based, in the fact that I don't care wher my boxes are, but what they __do__. Also refer to the tree below to add new roles for server testing.
+Refer to the available list of tests below. These tests are role-based, in the fact that I don't care where my boxes are, but what they __do__. Also refer to the tree below to add new roles for server testing.
 
 ### Role-based testing
 
-Put your __roles__ into a new directory. Put as many tests in that new dir.
+Put your __roles__ into a new directory, like spec/blah.
 
 ````bash
-ls -1 spec                                                                                                  ~/projects/LAXPT
+ls -1 spec
 apache
 checkmk
 common
 docker
 jenkins
+mongodb
 mysql
 puppet
 solr
 solr02
-spec_helper.rb
 xmon
-```
+````
 
 Add your servers to the roles as shown below.
 
@@ -82,8 +102,10 @@ xmon.vm.local:
     - docker
 ````    
 
-````bash
+Once you have added a new dir under spec and added some tests, they will be listed here.
 
+
+````bash
 rake -T --all
 rake serverspec:all        #
 rake serverspec:checkmk01  # Run serverspec to checkmk01.vm.local
@@ -95,10 +117,7 @@ rake serverspec:solr01     # Run serverspec to solr01.vm.local
 rake serverspec:solr02     # Run serverspec to solr02.vm.local
 rake serverspec:xmon       # Run serverspec to xmon.vm.local
 rake spec                  # Run serverspec to all hosts
-
 ````
-
-
 
 ## sources
 
@@ -111,6 +130,10 @@ I nicked code from these sources
 ## this is where you tell the user what all the files and directories are for
 
 ### files and stuff
+
+All your tests belong in the specs dir. Each dir is a __role__. So give the dirs sensible names.
+
+
 
 ````bash
 
