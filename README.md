@@ -43,6 +43,8 @@ just tell the user what to do
 
 ## Serverspec testing
 
+Just use `bundle install` to install serverspec. Vagrat boxes are now reedy for testing.
+
 Refer to the available list of tests below. These tests are role-based, in the fact that I don't care wher my boxes are, but what they __do__. Also refer to the tree below to add new roles for server testing.
 
 ````bash
