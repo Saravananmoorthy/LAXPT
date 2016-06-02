@@ -47,6 +47,41 @@ Just use `bundle install` to install serverspec. Vagrat boxes are now reedy for 
 
 Refer to the available list of tests below. These tests are role-based, in the fact that I don't care wher my boxes are, but what they __do__. Also refer to the tree below to add new roles for server testing.
 
+### Role-based testing
+
+Put your __roles__ into a new directory. Put as many tests in that new dir.
+
+````bash
+ls -1 spec                                                                                                  ~/projects/LAXPT
+apache
+checkmk
+common
+docker
+jenkins
+mysql
+puppet
+solr
+solr02
+spec_helper.rb
+xmon
+```
+
+Add your servers to the roles as shown below.
+
+````bash
+head properties.yml                                                                                         ~/projects/LAXPT
+# role-based puppet => role-based testing!!
+puppet01.vm.local:
+  :roles:
+    - commonss
+    - puppet
+xmon.vm.local:
+  :roles:
+    - common
+    - role2
+    - docker
+````    
+
 ````bash
 
 rake -T --all
