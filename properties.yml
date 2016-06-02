@@ -1,0 +1,33 @@
+# role-based puppet => role-based testing!!
+puppet01.vm.local:
+  :roles:
+    - commonss
+    - puppet
+xmon.vm.local:
+  :roles:
+    - common
+    - role2
+checkmk01.vm.local:
+  :roles:
+    - common
+    - role2
+checkmk02.vm.local:
+  :roles:
+    - checkmk
+    - common
+solr01.vm.local:
+  :roles:
+    - solr
+    - common
+solr02.vm.local:
+  :roles:
+    - solr
+    - common
+opsview.vm.local:
+  :roles:
+    - common
+    - role2
+jenkins.vm.local:
+  :roles:
+    - jenkins
+    - common

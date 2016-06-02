@@ -1,7 +1,7 @@
 # site.pp - main target(s)
 
 
-node 'puppet.vm.local' {
+node 'agent.local' {
   notify {'test':}
 }
 # node /checkmk0[1-9].vm.local/ {

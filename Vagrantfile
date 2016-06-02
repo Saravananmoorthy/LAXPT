@@ -1,36 +1,29 @@
 # -*- mode: ruby -*-
-# vi: set ft=ruby :
+# # vi: set ft=ruby :
+# source; - http://goo.gl/Y18HDe
+# nicked code from http://goo.gl/Y18HDe
 
-# modiified from https://goo.gl/TYcECR
-
-nodes_config = (JSON.parse(File.read("./boot_files/nodes.json")))['nodes']
-
+Vagrant.require_version ">= 1.6.0"
 VAGRANTFILE_API_VERSION = "2"
 
+# Require YAML module
+require 'yaml'
+
+# Read YAML file with box details
+servers = YAML.load_file('bootfiles/servers.yaml')
+
+# Create boxes
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
-
-  config.vm.synced_folder "etc/my_puppet", "/data"
-
-  nodes_config.each do |node|
-    node_name   = node[0] # name of node
-    node_values = node[1] # content of node
-
-    config.vm.define node_name do |config|
-
-    config.vm.hostname = node_name
-    config.vm.network :private_network, ip: node_values[':ip']
-
-    # default RAM for all. no gui
-    config.vm.provider "virtualbox" do |vb|
-      vb.gui = false
-    end
-
-    config.vm.box = node_values[':box']
-
-    # provisioning
-    config.vm.provision :shell, :path => node_values[':bootstrap']
-
+  # Iterate through entries in YAML file
+  servers.each do |servers|
+    config.vm.define servers["name"] do |srv|
+      srv.vm.box = servers["box"]
+      srv.vm.network "private_network", ip: servers["ip"]
+      srv.vm.provider :virtualbox do |vb|
+        vb.name = servers["name"]
+        vb.memory = servers["ram"]
+      end
     end
   end
 end
