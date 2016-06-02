@@ -5,17 +5,11 @@ Code used during the Linux Academy Puppet Training Course
 
 * have a working lab ready for the Linux Academy Puppet Training
 
-* use this lap to test anything pupppet-related
+* use this lab to test anything pupppet-related
 
-[+] checkmk server - any version
+* Use serverspec to test the vagrant boxes
 
-[+] puppetmaster
 
-[+] puppet agents - mixed OS
-
-[+] solr - version changme.xyz
-
-[+] collect data and monitor a simple solr service
 
 ````bash
 vx status                                                                                                                                                                                                                     LAXPT
