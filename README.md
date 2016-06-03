@@ -18,9 +18,14 @@ The state of my workstation at time of writing:-
 vagrant --version
 Vagrant 1.8.1
 
+# for automajic handling of hostnames
+vagrant plugin install vagrant-hostmanager
+
 ruby --version
 ruby 2.0.0p648 (2015-12-16 revision 53162) [universal.x86_64-darwin15]
 ````
+
+
 
 ### Ruby gems
 ````bash

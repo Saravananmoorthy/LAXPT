@@ -20,9 +20,17 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     config.vm.define servers["name"] do |srv|
       srv.vm.box = servers["box"]
       srv.vm.network "private_network", ip: servers["ip"]
+      srv.vm.hostname = servers["hostname"]
 
       # install puppet with a shell script
       srv.vm.provision "shell", path: "bootfiles/install_puppet_agent.sh"
+
+      # handle hostnames
+      config.hostmanager.enabled = true
+      config.hostmanager.manage_host = true
+      config.hostmanager.manage_guest = true
+      config.hostmanager.ignore_private_ip = false
+      config.hostmanager.include_offline = true
 
       # now you can provision with puppet
       srv.vm.provision "puppet" do |puppet|
