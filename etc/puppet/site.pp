@@ -1,19 +1,19 @@
 # site.pp - main target(s)
 
-node /checkmk0[1-9].vm.local/ {
+node 'xmon.vm.local' {
+  include debugging
+}
+
+node 'checkmk.vm.local' {
   notify {'checkmk':}
 }
 
-node /solr0[1-9].vm.local/ {
+node 'solr.vm.local' {
   notify{'solr':}
 }
 
-node 'puppet01.vm.local' {
+node 'puppet.vm.local' {
   notify {'puppet':}
-}
-
-node 'xmon.vm.local' {
-  notify {'xmon':}
 }
 
 node 'jenkins.vm.local' {

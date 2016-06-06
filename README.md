@@ -39,36 +39,63 @@ rspec-puppet (2.4.0, 2.0.1)
 
 
 ### Vagrant boxes
-128MB RAM each.
+
+CentOS 7 but can be anything you like. Just configure in vagrant.yaml.
+
 
 ````bash
 vagrant status
 Current machine states:
 
-puppet01.vm.local         running (virtualbox)
-xmon.vm.local             not created (virtualbox)
-checkmk.vm.local        not created (virtualbox)
-checkmk02.vm.local        not created (virtualbox)
-solr01.vm.local           not created (virtualbox)
-solr02.vm.local           not created (virtualbox)
-opsview.vm.local          not created (virtualbox)
-jenkins.vm.local          not created (virtualbox)
+Current machine states:
+
+puppet                    not created (virtualbox)
+app01                     not created (virtualbox)
+app02                     not created (virtualbox)
+solr01                    not created (virtualbox)
+solr02                    not created (virtualbox)
+zoo01                     not created (virtualbox)
+zoo02                     not created (virtualbox)
 ````
 
 
 ## Usage summary
 
-* $editor properties.yml - define roles for the vagrant boxes
+### On host
+* $editor vagrant.yaml - define your server "specs". RAM, IP, vagrant box etc
 
-* $editor bootfiles/servers.yml - define your server "specs". RAM, IP, vagrant box etc
+* `vagrant up` to bring up all boxes
+
+* `vagrant hostmanager` # automajic for /etc/hosts
+
+* `vagrant ssh puppet` # log into this box. do your puppet foo
+
+### inside puppetmaster
+
+* `sh /vagrant/bootfiles/centosPM.sh` # install puppetmaster and *screen*
+
+* run `screen`
+
+* start puppet master with `puppet master --no-daemonize`
+
+* All hosts are *autosigned*. No need to sign certs.
 
 
-* `vagrant up` or `vagrant up __node.vm.local__`
+### inside puppet agent
 
+* `vagrant ssh [node]` # log into "agent". puppet agent foo here
+
+install puppet agent
+
+* `sh /vagrant/bootfiles/centosPA.sh`
+
+Agent wil be autosigned. So from now run;
+
+* `puppet agent --test`
 
 ## Serverspec testing
 
-Just use `bundle install` to install serverspec. Vagrant boxes are now ready for testing.
+Bring all of the boxes up. Use `bundle install` to install serverspec. Vagrant boxes are now ready for testing.
 
 Refer to the available list of tests below. These tests are role-based, in the fact that I don't care where my boxes are, but what they __do__. Also refer to the tree below to add new roles for server testing.
 
@@ -129,6 +156,8 @@ rake spec                  # Run serverspec to all hosts
 I nicked code from these sources
 
 * https://goo.gl/MDNxR8
+
+* http://goo.gl/Y18HDe
 
 
 
