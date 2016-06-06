@@ -18,7 +18,7 @@ The state of my workstation at time of writing:-
 vagrant --version
 Vagrant 1.8.1
 
-# for automajic handling of hostnames
+### For automajic handling of hostnames
 vagrant plugin install vagrant-hostmanager
 
 ruby --version
