@@ -1,49 +1,49 @@
 ---
 - name:  puppet.vm.local
   hostname: puppet.vm.local
-  box: centos7
+  box: centos-7.2-x86_64
   ip: 192.168.40.5
   ports: []
   ram: 128
 - name: app01.vm.local
   hostname: app01.vm.local
-  box: centos7
+  box: centos-7.2-x86_64
   ip: 192.168.40.10
   ports: []
   ram: 128
 - name: app02.vm.local
   hostname: app02.vm.local
-  box: centos7
+  box: centos-7.2-x86_64
   ip: 192.168.40.15
   ports: []
   ram: 128
 - name:    solr01.vm.local
   hostname: solr01.vm.local
   ip: 192.168.40.20
-  box: centos7
+  box: centos-7.2-x86_64
   ports: []
   ram: 128
 - name:    solr02.vm.local
   hostname: solr02.vm.local
   ip: 192.168.40.25
-  box: centos7
+  box: centos-7.2-x86_64
   ports: []
   ram: 128
 - name:    zoo01.vm.local
   hostname: zoo01.vm.local
   ip: 192.168.40.30
-  box: centos7
+  box: centos-7.2-x86_64
   ports: []
   ram: 128
 - name:    zoo02.vm.local
   hostame:    zoo02.vm.local
-  box: centos7
+  box: centos-7.2-x86_64
   ip: 192.168.40.35
   ports: []
   ram: 128
 - name:    zoo03.vm.local
   hostame:    zoo03.vm.local
-  box: centos7
+  box: centos-7.2-x86_64
   ip: 192.168.40.40
   ports: []
   ram: 128
