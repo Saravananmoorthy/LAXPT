@@ -3,23 +3,30 @@ puppet.vm.local:
   :roles:
     - common
     - puppet
-xmon.vm.local:
-  :roles:
-    - common
-    - munin
-checkmk.vm.local:
-  :roles:
-    - common
-    - checkmk
-solr.vm.local:
+solr01.vm.local:
   :roles:
     - common
     - solr
-docker.vm.local:
+solr02.vm.local:
+  - common
+	- solr
+app01.vm.local:
   :roles:
     - common
-    - docker
-jenkins.vm.local:
+    - tomcat
+app02.vm.local:
+	:roles:
+	  - common
+	  - tomcat
+zoo01.vm.local:
   :roles:
     - common
-    - jenkins
+	  - zookeeper
+zoo02.vm.local:
+  :roles:
+    - common
+	  - zookeeper
+zoo03.vm.local:
+  :roles:
+    - common
+	  - zookeeper

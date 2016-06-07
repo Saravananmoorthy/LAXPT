@@ -41,3 +41,9 @@
   ip: 192.168.40.35
   ports: []
   ram: 128
+- name:    zoo03.vm.local
+  hostame:    zoo03.vm.local
+  box: centos7
+  ip: 192.168.40.40
+  ports: []
+  ram: 128
