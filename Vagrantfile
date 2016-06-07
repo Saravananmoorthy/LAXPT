@@ -21,9 +21,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       srv.vm.network "private_network", ip: servers["ip"]
       srv.vm.hostname = servers["hostname"]
 
-      # install puppet with a shell script
-      srv.vm.provision "shell", "inline": "echo hello"
-
       # provision all hosts with official epel repo
       srv.vm.provision "shell", path: "bootfiles/epel.sh"
 
