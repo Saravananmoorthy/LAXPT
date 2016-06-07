@@ -5,7 +5,7 @@ require 'spec_helper'
 # common packages...
 # common users....
 
-common_packages = ['apg', 'fain2bain', 'ntp', 'netstat', 'puppet']
+common_packages = ['apg', 'fail2bain', 'ntp', 'netstat', 'puppet']
 
 
 describe "packages common to all boxes:" do
