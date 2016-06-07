@@ -47,15 +47,13 @@ CentOS 7 but can be anything you like. Just configure in vagrant.yaml.
 vagrant status
 Current machine states:
 
-Current machine states:
-
-puppet                    not created (virtualbox)
-app01                     not created (virtualbox)
-app02                     not created (virtualbox)
-solr01                    not created (virtualbox)
-solr02                    not created (virtualbox)
-zoo01                     not created (virtualbox)
-zoo02                     not created (virtualbox)
+puppet.vm.local
+app01.vm.local
+app02.vm.local
+solr01.vm.local
+solr02.vm.local
+zoo01.vm.local
+zoo02.vm.local
 ````
 
 

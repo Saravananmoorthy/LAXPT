@@ -1,0 +1,26 @@
+# role-based puppet => role-based testing!!
+puppet.vm.local:
+  :roles:
+    - test
+    # - common
+    # - puppet
+xmon.vm.local:
+  :roles:
+    - common
+    - munin
+checkmk.vm.local:
+  :roles:
+    - common
+    - checkmk
+solr.vm.local:
+  :roles:
+    - common
+    - solr
+docker.vm.local:
+  :roles:
+    - common
+    - docker
+jenkins.vm.local:
+  :roles:
+    - common
+    - jenkins
