@@ -31,8 +31,8 @@ describe "tests for solr servers" do
   describe file('/etc/tomcat6/comcat-users.xml') do
     it { should exist }
     it { should be_file }
-    its(:content) { should match /role rolename="admin"/}
-    its(:content) { should match /user username="tomcat" password="tomcat" roles="manager,admin"/}
+    its(:content) { should match \/role rolename="admin"/}
+    its(:content) { should match \/user username="tomcat" password="tomcat" roles="manager,admin"/}
   end
 
 # location of jar files

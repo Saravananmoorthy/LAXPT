@@ -82,7 +82,7 @@ describe "tests for puppet.conf" do
 		its(:stdout) { should match /pidfile = \/var\/run\/puppetlabs\/main.pid/ }
 		its(:stdout) { should match /manifest = \/etc\/puppetlabs\/code\/environments\/production\/manifests/ }
 		its(:stdout) { should match /modulepath = \/etc\/puppetlabs\/code\/environments\/production\/modules:\/etc\/puppetlabs\/code\/modules:\/opt\/puppetlabs\/puppet\/modules / }
-		its(:stdout) { should match /default_manifest = ./manifests/ }
+		its(:stdout) { should match /default_manifest = .\/manifests/ }
 		its(:stdout) { should match /masterhttplog = \/var\/log\/puppetlabs\/puppet\/masterhttp.log/ }
 		its(:stdout) { should match /bucketdir = \/opt\/puppetlabs\/puppet\/cache\/bucket/ }
 		its(:stdout) { should match /rest_authconfig = \/etc\/puppetlabs\/puppet\/auth.conf/ }

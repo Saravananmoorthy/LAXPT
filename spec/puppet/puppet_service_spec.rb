@@ -7,17 +7,17 @@ describe service('puppetmaster') do
 end
 
 describe command('dpkg -l puppetmaster'), :if => os[:family] == 'ubuntu' do
-  its(:stdout) { should match \/3.4.3/ }
+  its(:stdout) { should match /3.4.3/ }
 end
 
 describe command('puppet master --version') do
-  its(:stdout) { should match \/3.4.3/ }
+  its(:stdout) { should match /3.4.3/ }
 end
 
 describe command('rpm -qa| grep puppetmaster'), :if => os[:family] == 'redhat' do
-  its(:stdout) { should match \/3.4.3/ }
+  its(:stdout) { should match /3.4.3/ }
 end
 
 describe command('puppet master --version'), :if => os[:family] == 'redhat' do
-  its(:stdout) { should match \/3.4.3/ }
+  its(:stdout) { should match /3.4.3/ }
 end
