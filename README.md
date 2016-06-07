@@ -70,7 +70,7 @@ zoo02.vm.local
 
 ### inside puppetmaster
 
-* `sh /vagrant/bootfiles/centosPM.sh` # install puppetmaster and *screen*
+* `sudo sh /vagrant/bootfiles/centosPM.sh` # install puppetmaster and *screen*
 
 * run `screen`
 
@@ -85,7 +85,7 @@ zoo02.vm.local
 
 install puppet agent
 
-* `sh /vagrant/bootfiles/centosPA.sh`
+* `sudo sh /vagrant/bootfiles/centosPA.sh`
 
 Agent wil be autosigned. So from now run;
 

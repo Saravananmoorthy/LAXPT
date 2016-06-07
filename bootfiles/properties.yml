@@ -1,9 +1,8 @@
 # role-based puppet => role-based testing!!
 puppet.vm.local:
   :roles:
-    - test
-    # - common
-    # - puppet
+    - common
+    - puppet
 xmon.vm.local:
   :roles:
     - common
