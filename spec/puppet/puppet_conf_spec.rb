@@ -1,13 +1,5 @@
 require 'spec_helper'
 
-pidfile = /var/run/puppetlabs/puppetserver/puppetserver.pid
-codedir = /etc/puppetlabs/code
-environmentpath = $codedir/environments
-environment_timeout = 60
-storeconfigs=true
-storeconfigs_backend=puppetdb
-reports = store,puppetdb
-
 describe "tests for puppet.conf" do
   describe file('/etc/puppet/puppet.conf') do
     it { should be_file }
