@@ -9,7 +9,7 @@ VAGRANTFILE_API_VERSION = "2"
 require 'yaml'
 
 # Read YAML file with box details
-servers = YAML.load_file('bootfiles/Vagrant.yaml')
+servers = YAML.load_file('bootfiles/vagrant.yaml')
 
 # Create boxes
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
@@ -22,7 +22,12 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       srv.vm.hostname = servers["hostname"]
 
       # provision all hosts with official epel repo
-      srv.vm.provision "shell", path: "bootfiles/epel.sh"
+      if servers["box"] == '/centos*/'
+        srv.vm.provision "shell", path: "bootfiles/epel.sh"
+      elsif servers["box"] == '/ubuntu*/'
+        srv.vm.provision "shell", path: "bootfiles/ubuntuTidy.sh"
+      end
+
 
       # handle hostnames
       config.hostmanager.enabled = true
