@@ -17,7 +17,3 @@ end
 describe command('rpm -qa| grep puppetmaster'), :if => os[:family] == 'redhat' do
   its(:stdout) { should match /3.4.3/ }
 end
-
-describe command('puppet master --version'), :if => os[:family] == 'redhat' do
-  its(:stdout) { should match /3.4.3/ }
-end
