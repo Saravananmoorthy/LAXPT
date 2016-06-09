@@ -8,25 +8,25 @@ solr01.vm.local:
     - common
     - solr
 solr02.vm.local:
-  - common
-	- solr
+    - common
+    - solr
 app01.vm.local:
   :roles:
     - common
     - tomcat
 app02.vm.local:
-	:roles:
-	  - common
-	  - tomcat
+  :roles:
+    - common
+    - tomcat
 zoo01.vm.local:
   :roles:
     - common
-	  - zookeeper
+    - zookeeper
 zoo02.vm.local:
   :roles:
     - common
-	  - zookeeper
+    - zookeeper
 zoo03.vm.local:
   :roles:
     - common
-	  - zookeeper
+    - zookeeper
