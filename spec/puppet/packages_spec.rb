@@ -3,7 +3,7 @@ require 'spec_helper'
 # puppet => __agent__
 
 
-puppet_packages = ['puppetmaster', 'puppet-lint', 'puppet']
+puppet_packages = ['puppetmaster', 'puppet-lint', 'puppet', 'puppetdb']
 
 describe "packages for puppet master:" do
   puppet_packages.each do|j|
