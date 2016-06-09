@@ -27,13 +27,12 @@ ruby 2.0.0p648 (2015-12-16 revision 53162) [universal.x86_64-darwin15]
 
 
 
-### Ruby gems
+### Ruby gems - install me!!
 ````bash
-gem list | awk '/puppet |bundler|lint /'
+gem list | awk '/puppet |bundler|rake/'
 bundler (1.11.2)
-metadata-json-lint (0.0.11)
 puppet (4.5.0 universal-darwin, 4.4.2 universal-darwin)
-puppet-lint (1.1.0)
+rake (11.1.2, 10.5.0, 0.9.6)
 rspec-puppet (2.4.0, 2.0.1)
 ````
 
