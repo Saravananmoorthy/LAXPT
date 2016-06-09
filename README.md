@@ -10,6 +10,12 @@ Code used during the Linux Academy Puppet Training Course.
 * Use serverspec to test the vagrant boxes (prove my puppet-foo).
 
 
+## Assumptions
+
+* The puppet server and puppet agent is from the official puppetlabs repo
+
+* EFC is using CentOS7 - use for all nodes
+
 ## Tools needed
 
 The state of my workstation at time of writing:-
