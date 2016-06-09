@@ -30,3 +30,7 @@ zoo03.vm.local:
   :roles:
     - common
     - zookeeper
+docker.vm.local:
+  :roles:
+    - common
+    - docker

@@ -47,3 +47,9 @@
   ip: 192.168.40.40
   ports: []
   ram: 128
+- name:    docker.vm.local
+  hostame:    docker.vm.local
+  box: centos7
+  ip: 192.168.40.40
+  ports: []
+  ram: 128
